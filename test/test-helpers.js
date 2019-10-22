@@ -125,33 +125,9 @@ function makeExpectedCollection(users, collection, items = []) {
 
   return {
     id: collection.id,
-    title: collection.title,
-    user: {
-      id: user.id,
-      username: user.username,
-      fullname: user.fullname,
-    }
+    title: collection.title
   };
 }
-
-/* function makeExpectedCollectionItems(users, collectionid, items) {
-  const expectedItems = items.filter(item => item.collection_id === collectionid);
-
-  return expectedItems.map(item => {
-    const reviewUser = users.find(user => user.id === review.user_id);
-    return {
-      id: review.id,
-      text: review.text,
-      user: {
-        id: reviewUser.id,
-        user_name: reviewUser.user_name,
-        full_name: reviewUser.full_name,
-        nickname: reviewUser.nickname,
-        date_created: reviewUser.date_created
-      }
-    };
-  });
-} */
 
 function makeCollectionsFixtures() {
   const testUsers = makeUsersArray();

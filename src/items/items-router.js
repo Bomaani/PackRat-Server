@@ -30,19 +30,23 @@ itemsRouter
     console.log(req.body);
     if (!title) {
       console.log("Title is required");
-      return res.status(400).send("Invalid title");
+      return res.status(400).send({error: `Missing title in request body`});
     }
     if (!info) {
       console.log("Info is required");
-      return res.status(400).send("Invalid data");
+      return res.status(400).send({error: `Missing info in request body`});
     }
     if (!year_released) {
       console.log("Year Released is required");
-      return res.status(400).send("Invalid data");
+      return res.status(400).send({error: `Missing year_released in request body`});
     }
     if (!collection_id) {
       console.log("Collection_id is required");
-      return res.status(400).send("Invalid data");
+      return res.status(400).send({error: `Missing collection_id in request body`});
+    }
+    if (!image_url) {
+      console.log("Image_URL is required");
+      return res.status(400).send({error: `Missing image_url in request body`});
     }
 
     const newItem = { title, info, year_released, image_url, collection_id };
@@ -102,7 +106,7 @@ itemsRouter
       return res.status(400).json({
         error: {
           message:
-            "Request body must contain either 'title', 'info','year_released','image_url','collection_id'"
+            "Request body must contain either 'title', 'info', 'year_released', 'image_url', 'collection_id'"
         }
       });
     }

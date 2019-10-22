@@ -27,6 +27,12 @@ describe.only('Collections Endpoints', function() {
 
   describe(`GET /packrat/collections`, () => {
     context(`Given no collections`, () => {
+      beforeEach('insert collections', () =>
+        helpers.seedUsers(
+          db,
+          testUsers
+        )
+      )
       it(`responds with 200 and an empty list`, () => {
         return supertest(app)
           .get('/packrat/collections')
@@ -45,7 +51,7 @@ describe.only('Collections Endpoints', function() {
         )
       )
 
-      it('responds with 200 and all of the collections', () => {
+      it('responds with 200 and all of the collections associated with the user', () => {
         const expectedCollections = testCollections.map(collection =>
           helpers.makeExpectedCollection(
             testUsers,
@@ -53,11 +59,13 @@ describe.only('Collections Endpoints', function() {
             testItems
           )
         )
+        console.log(expectedCollections)
         return supertest(app)
           .get('/packrat/collections')
           .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-          .expect(200, expectedCollections)
-      })
+          .expect(200, [expectedCollections[0]] )
+      
+        
     })
   })
 
@@ -71,7 +79,7 @@ describe.only('Collections Endpoints', function() {
         return supertest(app)
           .get(`/packrat/collections/${collectionId}`)
           .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-          .expect(404, { message: `collection not found` })
+          .expect(404, { error: { message: `collection not found` }})
       })
     })
 
@@ -127,4 +135,5 @@ describe.only('Collections Endpoints', function() {
       )
     })
   })
+})
 })
