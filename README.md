@@ -9,13 +9,21 @@ Html, CSS, Jquery, Javascript, Ajax, Express, React, Node, Postgresql
 ## link to WireFrames 
 * https://thinkful-ei-gecko.github.io/Brock-Capstone-1-Wireframes/Wireframes/landingPage.html
 
-## link to Live Client App 
+## link to Live App 
 * https://packrat-app.brockboutwell.now.sh
 
 ## link to Client Github Repo 
 * https://github.com/Bomaani/PackRat-Client-React
 
+## link to Server Github Repo 
+* https://github.com/Bomaani/PackRat-Server
+
 # User Stories
+
+
+![Packrat Landing Page](/images/screenshot1.png "PackRat")
+
+
 
 ### As a new user I want to be able to: 
 *  Create a new account, 
