@@ -66,7 +66,6 @@ itemsRouter
   .route("/:item_id")
   .all(requireAuth)
   .all((req, res, next) => {
-    //console.log('items router /:item_id')
     return ItemsService.getById(req.app.get("db"), req.params.item_id)
       .then(item => {
         if (!item) {
@@ -123,8 +122,6 @@ itemsRouter
   .all(checkItemExists)
   .all(requireAuth)
   .all((req, res, next) => {
-    //console.log('items router /item/:item_id')
-    //console.log(req.params.item_id)
     ItemsService.getById(req.app.get("db"), req.params.item_id)
       .then(item_id => {
         res.json(item_id);
